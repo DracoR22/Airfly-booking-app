@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className='mx-10'>
       <div className='mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8'>
-   {places.map((place, idx) => (
+   {Array.isArray(places) && places.map((place, idx) => (
     <Link key={idx} to={'/Place/' + place._id}>
        
       <div className='flex bg-secondary rounded-2xl'>
