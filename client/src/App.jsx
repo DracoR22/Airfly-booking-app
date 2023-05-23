@@ -18,7 +18,7 @@ import BookingPlace from './Components/BookingPlace'
 
 
 //Default Url
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = import.meta.env.VITE_SERVER_BASE_URL
 
 //Keep Session Cookies
 axios.defaults.withCredentials = true
