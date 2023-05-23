@@ -17,6 +17,7 @@ const jwtSecret = 'grer3qwer3gtfgfhmkhgfcvcbvngfth'
 
 const allowedOrigins = [
    'https://airfly-booking-app-hd9f-muqdi28g6-rdraco039-gmailcom.vercel.app',
+   'https://airfly-booking-app-hd9f-391v7jw0z-rdraco039-gmailcom.vercel.app/',
    'http://localhost:3000',
  ];
 
