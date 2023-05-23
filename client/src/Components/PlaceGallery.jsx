@@ -19,7 +19,7 @@ const PlaceGallery = ({place}) => {
     
                 <div className='p-8 mx-10 grid gap-4 '>
                     
-                {place?.photos?.length > 0 && place.photos.map((photo, i) => (
+                {Array.isArray(place?.photos) && place?.photos?.length > 0 && place.photos.map((photo, i) => (
                 <div key={i}>
                 
                 <img className='w-full' src={'http://localhost:3000/' + place.photos?.[0]} alt="" />
