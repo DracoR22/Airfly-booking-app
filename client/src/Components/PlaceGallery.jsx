@@ -22,7 +22,7 @@ const PlaceGallery = ({place}) => {
                 {place?.photos?.length > 0 && place.photos.map((photo, i) => (
                 <div key={i}>
                 
-                <img className='w-full' src={'http://localhost:3000/' + photo} alt="" />
+                <img className='w-full' src={import.meta.env.VITE_SERVER_BASE_URL + photo} alt="" />
     
                 </div>
             ))} 
@@ -45,12 +45,12 @@ const PlaceGallery = ({place}) => {
         <div className='grid gap-2'>
         {place.photos?.[1] && (
                 <img onClick={() => setShowPhotos(true)} className='aspect-square object-cover h-[200px] w-full cursor-pointer'
-                 src={'http://localhost:3000/' + place.photos?.[1]} alt="" />
+                 src={"http://localhost:3000/" + place.photos?.[1]} alt="" />
             )}
 
          {place.photos?.[2] && (
                 <img onClick={() => setShowPhotos(true)} className='aspect-square object-cover h-[192px] w-full cursor-pointer'
-                 src={'http://localhost:3000/' + place.photos?.[2]} alt="" />
+                 src={"http://localhost:3000/"+ place.photos?.[2]} alt="" />
             )}
 
      

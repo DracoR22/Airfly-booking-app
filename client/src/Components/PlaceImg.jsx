@@ -13,7 +13,7 @@ const PlaceImg = ({place,index=0,className=null}) => {
     <div>
 
 <img className={className} 
-src={'http://localhost:3000/' + place.photos?.[index]} alt="" />
+src={"http://localhost:3000/" + place.photos?.[1]} alt="" />
 
     </div>
   )
