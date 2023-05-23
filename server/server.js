@@ -16,8 +16,8 @@ const app = express()
 const jwtSecret = 'grer3qwer3gtfgfhmkhgfcvcbvngfth'
 
 const allowedOrigins = [
-   'https://airfly-booking-app-hd9f-git-main-rdraco039-gmailcom.vercel.app/',
-   'http://localhost:3000',
+    'https://airfly-booking-app-hd9f-git-main-rdraco039-gmailcom.vercel.app/',
+   'http://localhost:5173',
  ];
 
 app.use(express.json())
