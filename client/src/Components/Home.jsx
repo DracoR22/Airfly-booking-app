@@ -8,6 +8,10 @@ const Home = () => {
   useEffect(() => {
     axios.get('/places')
     .then((response) => {setPlaces(response.data)})
+    .catch((error) => {
+      // Handle the error here
+      console.error('Error fetching places:', error);
+    });
   }, [])
 
   
@@ -16,7 +20,7 @@ const Home = () => {
      <div className='mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8'>
       {places && places.length && places.map((place, idx) => (
     <Link key={idx} to={'/Place/' + place._id}>
-       
+      
       <div className='flex bg-secondary rounded-2xl'>
       {place.photos?.[0] && (
         <img className='rounded-2xl object-cover aspect-square w-full' src={`${import.meta.env.VITE_IMG_URL}${place.photos?.[0]}`} alt="" />
