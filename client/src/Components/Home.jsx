@@ -9,6 +9,8 @@ const Home = () => {
     axios.get('/places')
     .then((response) => {setPlaces(response.data)})
   }, [])
+
+  
   return (
     <div className='mx-10'>
      <div className='mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8'>
@@ -17,7 +19,7 @@ const Home = () => {
        
       <div className='flex bg-secondary rounded-2xl'>
       {place.photos?.[0] && (
-        <img className='rounded-2xl object-cover aspect-square w-full' src={'http://localhost:3000/' + place.photos?.[0]} alt="" />
+        <img className='rounded-2xl object-cover aspect-square w-full' src={`${import.meta.env.VITE_IMG_URL}${place.photos?.[0]}`} alt="" />
       )}
       </div>
 
