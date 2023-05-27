@@ -18,7 +18,7 @@ import BookingPlace from './Components/BookingPlace'
 
 
 //Default Url
-axios.defaults.baseURL = import.meta.env.VITE_SERVER_BASE_URL
+axios.defaults.baseURL = 'https://airfly-booking.onrender.com/server'
 
 //Keep Session Cookies
 axios.defaults.withCredentials = true
