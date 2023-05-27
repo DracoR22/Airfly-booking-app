@@ -15,12 +15,12 @@ const app = express()
 
 const jwtSecret = 'grer3qwer3gtfgfhmkhgfcvcbvngfth'
 
-app.use(cors({
-   origin: ['http://localhost:5173', 'https://647226441619081148f2f023--dulcet-truffle-2cd630.netlify.app'],
-   credentials: true,}));
 app.use(express.json())
 app.use(cookieParser())
 app.use('/uploads', express.static(__dirname+'/uploads'))
+app.use(cors({
+   origin: ['http://localhost:5173', 'https://647226441619081148f2f023--dulcet-truffle-2cd630.netlify.app'],
+   credentials: true,}));
 
 mongoose.connect(process.env.MONGO_URL)
 
