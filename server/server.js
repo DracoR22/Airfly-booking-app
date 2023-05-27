@@ -15,20 +15,10 @@ const app = express()
 
 const jwtSecret = 'grer3qwer3gtfgfhmkhgfcvcbvngfth'
 
-const allowedOrigins = [
-    'https://airfly-booking-app-hd9f.vercel.app/',
-   'http://localhost:5173',
-   'https://airfly-booking-app-hd9f-git-main-rdraco039-gmailcom.vercel.app/',
-   'https://646d83a37c01c838ddeb63d9--dulcet-truffle-2cd630.netlify.app/',
- ];
-
 app.use(express.json())
 app.use(cookieParser())
 app.use('/uploads', express.static(__dirname+'/uploads'))
-app.use(cors({
-   credentials: true,
-   origin: allowedOrigins, 
-}))
+app.use(cors())
 
 mongoose.connect(process.env.MONGO_URL)
 
