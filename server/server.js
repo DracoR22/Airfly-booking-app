@@ -23,7 +23,6 @@ app.use(cors({
    origin: ['http://localhost:5173', 'https://647226441619081148f2f023--dulcet-truffle-2cd630.netlify.app'],
    }));
 
-mongoose.connect(process.env.MONGO_URL)
 
 function getUserDataFromReq(req) {
    return new Promise((resolve, reject) => {
@@ -35,10 +34,12 @@ function getUserDataFromReq(req) {
 }
 
 app.get("/server/api", (req, res) => {
+    mongoose.connect(process.env.MONGO_URL)
     res.json({"users": ["Tom", "Lador" ]})
  })
 
  app.post("/server/register", async (req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
    const{name, email, password} = req.body
 
    try{
@@ -55,6 +56,7 @@ app.get("/server/api", (req, res) => {
  })
 
  app.post("/server/login", async (req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
    const{email, password} = req.body
 const userDoc = await User.findOne({email})
 if (userDoc) {
@@ -75,6 +77,7 @@ if (passOk) {
 
  //Profile
  app.get('/server/profile', (req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
    const {token} = req.cookies
    if(token) {
      jwt.verify(token, jwtSecret, {}, async (err, userData) => {
@@ -121,6 +124,7 @@ res.json(uploadedFiles)
 
  //Post New Places
  app.post('/server/places', (req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
    const {token} = req.cookies
    const {title,address,addedPhotos,description,perks,extraInfo,checkIn,checkOut,maxGuests,price} = req.body
    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
@@ -138,6 +142,7 @@ res.json(placeDoc)
 
 //Display Places User Profile
 app.get('/server/user-places', (req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
    const {token} = req.cookies
    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
       const {id} = userData
@@ -147,12 +152,14 @@ app.get('/server/user-places', (req, res) => {
 
 //Access Specific File
 app.get('/server/places/:id', async (req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
    const {id} = req.params
    res.json(await Place.findById(id))
 })
 
 //Edit Files
 app.put('/server/places', async (req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
    const {token} = req.cookies
    const {id,title,address,addedPhotos,description,perks,extraInfo,checkIn,checkOut,maxGuests,price}
     = req.body
@@ -173,11 +180,13 @@ app.put('/server/places', async (req, res) => {
 
 //Display Places Globally
 app.get('/server/places', async (req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
    res.json(await Place.find())
 })
 
 //Booking
 app.post('/server/booking', async(req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
    const userData = await getUserDataFromReq(req)
    const {place,checkIn,checkOut,guests,name,mobile,price} = req.body
     Booking.create({
@@ -192,6 +201,7 @@ app.post('/server/booking', async(req, res) => {
 
 
 app.get('/server/booking', async (req, res) => {
+   mongoose.connect(process.env.MONGO_URL)
  const userData = await getUserDataFromReq(req)
  userData.id
  res.json(await Booking.find({user:userData.id}).populate('place'))
