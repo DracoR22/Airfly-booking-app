@@ -20,10 +20,10 @@ app.use(cookieParser())
 app.use('/uploads', express.static(__dirname+'/uploads'))
 app.use(cors({
    credentials: true,
-   origin: ['http://localhost:5173', 'https://647226441619081148f2f023--dulcet-truffle-2cd630.netlify.app'],
+   origin: ['http://localhost:5173', 'https://64723dca565044201abef58c--dulcet-truffle-2cd630.netlify.app/'],
    }));
 
-
+   
 function getUserDataFromReq(req) {
    return new Promise((resolve, reject) => {
       jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
