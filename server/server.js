@@ -20,7 +20,7 @@ app.use(cookieParser())
 app.use('/uploads', express.static(__dirname+'/uploads'))
 app.use(cors({
    credentials: true,
-   origin: ['http://localhost:5173'],
+   origin: ['http://localhost:5173', 'https://dulcet-truffle-2cd630.netlify.app/'],
    }));
 
    
@@ -68,7 +68,7 @@ if (passOk) {
       res.cookie('token', token, {
          secure: true, 
          sameSite: 'none',
-      }).json('pass Ok')
+      }).json(userDoc)
 })
 } else {
    res.status(422).json('pass not ok')
