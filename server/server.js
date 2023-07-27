@@ -66,9 +66,9 @@ if (passOk) {
    jwt.sign({email:userDoc.email, id:userDoc._id}, jwtSecret, {}, (err, token) => {
       if(err) throw err
       res.cookie('token', token, {
-         secure: false, 
+         secure: true, 
          sameSite: 'none',
-      }).json(userDoc)
+      }).json('pass Ok')
 })
 } else {
    res.status(422).json('pass not ok')
