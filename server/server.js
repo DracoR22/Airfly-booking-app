@@ -20,7 +20,7 @@ app.use(cookieParser())
 app.use('/uploads', express.static(__dirname+'/uploads'))
 app.use(cors({
    credentials: true,
-   origin: ['http://localhost:5173', 'https://64723dca565044201abef58c--dulcet-truffle-2cd630.netlify.app'],
+   origin: ['http://localhost:5173'],
    }));
 
    
@@ -65,7 +65,10 @@ if (passOk) {
   
    jwt.sign({email:userDoc.email, id:userDoc._id}, jwtSecret, {}, (err, token) => {
       if(err) throw err
-      res.cookie('token', token).json(userDoc)
+      res.cookie('token', token, {
+         secure: false, 
+         sameSite: 'none',
+      }).json(userDoc)
 })
 } else {
    res.status(422).json('pass not ok')
