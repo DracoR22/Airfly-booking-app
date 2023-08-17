@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Image from './Image'
 
 const Home = () => {
 
   const [places, setPlaces] = useState([])
   useEffect(() => {
-    axios.get('/places')
+    axios.get('/api/v1/post/places')
     .then((response) => {setPlaces(response.data)})
     .catch((error) => {
       // Handle the error here
@@ -23,7 +24,7 @@ const Home = () => {
       
       <div className='flex bg-secondary rounded-2xl'>
       {place.photos?.[0] && (
-        <img className='rounded-2xl object-cover aspect-square w-full' src={`https://airfly-booking.onrender.com/${place.photos?.[0]}`} alt="" />
+        <Image className='rounded-2xl object-cover aspect-square w-full' src={place.photos?.[0]} alt="" />
       )}
       </div>
 

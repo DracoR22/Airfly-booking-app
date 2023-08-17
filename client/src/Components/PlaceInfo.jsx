@@ -11,7 +11,7 @@ const PlaceInfo = () => {
         if (!id) {
             return
         }
-        axios.get('/places/' + id)
+        axios.get('/api/v1/post/places/' + id)
         .then((response) => {setPlace(response.data)})
     }, [id])
   return (

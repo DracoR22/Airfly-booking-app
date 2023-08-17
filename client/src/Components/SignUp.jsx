@@ -11,7 +11,7 @@ const [password, setPassword] = useState('')
 async function registerUser(ev) {
   ev.preventDefault()
   try{
-    await axios.post('/register', {
+    await axios.post('/api/v1/auth/register', {
         name,
         email,
         password,

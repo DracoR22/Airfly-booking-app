@@ -11,7 +11,7 @@ const Places = () => {
   const [places, setPlaces] = useState([])
 
 useEffect(() => {
-    axios.get('/user-places'). then(({data}) => {
+    axios.get('/api/v1/post/userPlaces'). then(({data}) => {
     setPlaces(data)
     }) 
 }, [])

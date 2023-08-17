@@ -5,6 +5,7 @@ import { Navigate, useParams } from 'react-router-dom'
 import { AiOutlineCloudUpload, AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import { HiOutlineTrash } from 'react-icons/hi'
 import AccountNav from './AccountNav'
+import Image from './Image'
 
 const PlacesForm = () => {
     const {id} = useParams()
@@ -26,7 +27,7 @@ const PlacesForm = () => {
     if (!id) {
       return
     }
-    axios.get('/places/' + id)
+    axios.get('/api/v1/post/places/' + id)
     .then(response => {
       const {data} = response
       setTitle(data.title)
@@ -81,7 +82,7 @@ const PlacesForm = () => {
       for (let i = 0; i < files.length; i++) {
         data.append('photos', files[i])
       }
-     axios.post('/upload', data, {
+     axios.post('/api/v1/images/upload', data, {
         headers: {'Content-type':'multipart/form-data'}
       }).then(response => {
         const {data:filenames} = response
@@ -120,7 +121,7 @@ perks,extraInfo,checkIn,checkOut,maxGuests,price,
 }
   if(id) {
     //Update Place
-    await axios.put('/places', 
+    await axios.put('/api/v1/post/places', 
   {id, 
     ...placeData
   })
@@ -128,7 +129,7 @@ perks,extraInfo,checkIn,checkOut,maxGuests,price,
     
   } else {
     // New Place
-    await axios.post('/places', 
+    await axios.post('/api/v1/post/places', 
   placeData)
   setRedirect(true)
     }
@@ -148,19 +149,12 @@ perks,extraInfo,checkIn,checkOut,maxGuests,price,
       {preInput('Address', 'address of your place')}
       <input value={address} onChange={ev => setAddress(ev.target.value)} className='w-full p-2 rounded-2xl bg-secondary' type="text" placeholder='Address'/>
 
-      {preInput('Photos', 'Upload a photo using a link')}
-       <div className='flex gap-2'>
-        <input value={photoLink} onChange={ev => setPhotoLink(ev.target.value)} className='w-full p-2 rounded-2xl bg-secondary' type="text" placeholder='Upload photo by link'/>
-        <button onClick={photoLink ? addPhotoByLink : null}  className='bg-button px-4 rounded-2xl text-black font-medium'>Upload</button>
-       </div>
-
-    
-       {preInput('', 'Or upload from your device')}
+       {preInput('', 'Upload images from your device')}
        <div className='mt-2 grid gap-2 grid-cols-3 lg:grid-cols-6 md:grid-cols-4'>
       
         {addedPhotos.length > 0 && addedPhotos.map((link, idx) => (
            <div className='h-32 flex relative' key={idx}>
-            <img className='rounded-2xl w-full position-center h-32' src={'http://localhost:3000/'+link} alt="/" />
+            <Image className='rounded-2xl w-full position-center h-32' src={link} alt="/" />
             <div onClick={() => removePhoto(link)} className='absolute bottom-1 right-2 cursor-pointer bg-black p-1 rounded-full bg-opacity-90'>
          <HiOutlineTrash className='text-2xl text-white'/>
             </div>

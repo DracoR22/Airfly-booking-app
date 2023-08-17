@@ -12,7 +12,7 @@ const BookingPlace = () => {
 
     useEffect(() => {
         if (id) {
-        axios.get('/booking')
+        axios.get('/api/v1/book/booking')
         .then(response => {const FoundBooking = (response.data.find(({_id}) => _id === id )
        
         )

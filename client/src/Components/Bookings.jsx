@@ -11,7 +11,7 @@ const Bookings = () => {
 const [booking, setBooking] = useState([])
 
 useEffect(() => {
-    axios.get('/booking')
+    axios.get('/api/v1/book/booking')
     .then(response => {setBooking(response.data)})
 }, [])
 

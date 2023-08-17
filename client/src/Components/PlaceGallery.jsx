@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TbGridDots } from 'react-icons/tb'
 import { IoIosArrowBack } from 'react-icons/io'
+import Image from './Image'
 
 const PlaceGallery = ({place}) => {
 
@@ -22,7 +23,7 @@ const PlaceGallery = ({place}) => {
                 {Array.isArray(place?.photos) && place?.photos?.length > 0 && place.photos.map((photo, i) => (
                 <div key={i}>
                 
-                <img className='w-full' src={`https://airfly-booking.onrender.com/${place.photos?.[0]}`} alt="" />
+                <Image className='w-full' src={photo} alt="" />
     
                 </div>
             ))} 
@@ -37,19 +38,19 @@ const PlaceGallery = ({place}) => {
 
         <div>
             {place.photos?.[0] && (
-                <img onClick={() => setShowPhotos(true)} className='aspect-square object-cover h-[400px] w-full cursor-pointer' src={`https://airfly-booking.onrender.com/${place.photos?.[0]}`} alt="" />
+                <Image onClick={() => setShowPhotos(true)} className='aspect-square object-cover h-[400px] w-full cursor-pointer' src={place.photos[0]} alt="" />
             )}
         </div>
 
         <div className='grid gap-2'>
         {place.photos?.[1] && (
-                <img onClick={() => setShowPhotos(true)} className='aspect-square object-cover h-[200px] w-full cursor-pointer'
-                 src={`https://airfly-booking.onrender.com/${place.photos?.[1]}`} alt="" />
+                <Image onClick={() => setShowPhotos(true)} className='aspect-square object-cover h-[200px] w-full cursor-pointer'
+                 src={place.photos[1]} alt="" />
             )}
 
          {place.photos?.[2] && (
-                <img onClick={() => setShowPhotos(true)} className='aspect-square object-cover h-[192px] w-full cursor-pointer'
-                 src={`https://airfly-booking.onrender.com/${place.photos?.[2]}`} alt="" />
+                <Image onClick={() => setShowPhotos(true)} className='aspect-square object-cover h-[192px] w-full cursor-pointer'
+                 src={place.photos[2]} alt="" />
             )}
 
      

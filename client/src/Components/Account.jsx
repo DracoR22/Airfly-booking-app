@@ -21,7 +21,7 @@ return <Navigate to={redirect}/>
 
 //LogOut
 async function logout() {
-   await axios.post('/logout')
+   await axios.post('/api/v1/auth/logout')
    setRedirect('/LogIn')
    setUser(null)
    

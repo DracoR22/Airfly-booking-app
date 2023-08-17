@@ -12,7 +12,7 @@ const {setUser} = useContext(UserContext)
 async function handleLoginSubmit(ev) {
   ev.preventDefault()
   try{
-   const {data} = await axios.post('/login', {email, password})
+   const {data} = await axios.post('/api/v1/auth/login', {email, password})
    setUser(data)
     alert('Login succesful')
     setRedirect(true)

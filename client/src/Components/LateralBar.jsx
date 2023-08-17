@@ -28,7 +28,7 @@ const LateralBar = () => {
       if (!id) {
           return
       }
-      axios.get('/places/' + id)
+      axios.get('/api/v1/post/places/' + id)
       .then((response) => {setPlace(response.data)})
   }, [id])
 
@@ -48,7 +48,7 @@ const LateralBar = () => {
       return;
     }
 
-      const response = await axios.post('/booking', {checkIn, checkOut, guests, name, mobile,
+      const response = await axios.post('/api/v1/book/booking', {checkIn, checkOut, guests, name, mobile,
             place:place._id, price:numberOfNights * price})  
            
             const bookingId = response.data._id

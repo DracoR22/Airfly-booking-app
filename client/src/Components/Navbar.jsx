@@ -20,7 +20,7 @@ const {user, setUser} = useContext(UserContext)
 
 //LogOut
 async function logout() {
-  await axios.post('/logout')
+  await axios.post('/api/v1/auth/logout')
   setUser(null)}
 
   return (
